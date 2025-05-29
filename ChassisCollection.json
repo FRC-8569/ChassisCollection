@@ -7,7 +7,7 @@
     "mavenUrls": [
         "https://github.com/FRC-8569/ChassisCollection"
     ],
-    "jsonUrl": "https://github.com/FRC-8569/ChassisCollection/vendordeps/ChassisCollection.json",
+    "jsonUrl": "https://github.com/FRC-8569/vendordeps/ChassisCollection.json",
     "javaDependencies": [
         {
             "group": "${group}",
