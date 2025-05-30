@@ -1,17 +1,12 @@
 package org.ZenithPolaris.Collections;
 
 import static edu.wpi.first.units.Units.Celsius;
-import static edu.wpi.first.units.Units.Degree;
 import static edu.wpi.first.units.Units.Degrees;
-import static edu.wpi.first.units.Units.DegreesPerSecond;
-import static edu.wpi.first.units.Units.Meter;
 import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
-import static edu.wpi.first.units.Units.Radians;
 import static edu.wpi.first.units.Units.Rotations;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 
-import org.ZenithPolaris.Collections.Encoder.CTRECANCoder;
 import org.ZenithPolaris.Collections.utils.DifferentialWheelConfig;
 import org.ZenithPolaris.Collections.utils.DifferentialWheels;
 import org.ZenithPolaris.Collections.utils.EncoderFrame;
@@ -25,7 +20,6 @@ import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.InvertedValue;
@@ -49,7 +43,6 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.units.measure.Temperature;
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
 
 public class Wheels {
     public static class SparkMaxWheel implements DifferentialWheels<SparkMax> {

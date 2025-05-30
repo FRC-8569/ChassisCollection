@@ -9,9 +9,10 @@ import org.ZenithPolaris.Collections.utils.KOPChassisConfig;
 import org.ZenithPolaris.Collections.utils.MecanumChassisConfig;
 import org.ZenithPolaris.Collections.utils.SwerveChassisConfig;
 
+import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
-import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
@@ -22,14 +23,20 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.networktables.BooleanPublisher;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.StructPublisher;
 
 public class Chassis {
+
     public static class KOPChassis{
         public DifferentialWheels<?>[] LeftMotor, RightMotor;
         public GyroInterface<?> gyro;
         public KOPChassisConfig chassisConfig;
         public DifferentialDriveKinematics kinematics;
-        public DifferentialDriveOdometry odometry;
+        public DifferentialDrivePoseEstimator poseEstimator;
+        public StructPublisher<Pose2d> PosePublish = NetworkTableInstance.getDefault().getStructTopic("Drivetrain/RobotPose", Pose2d.struct).publish();
+        public BooleanPublisher TempAlert = NetworkTableInstance.getDefault().getBooleanTopic("Drivetrain/isTempLimitHit").publish();
 
         /**
          * 
@@ -67,7 +74,7 @@ public class Chassis {
 
             this.chassisConfig = chassisConfig;
             this.gyro = gyro;
-            this.odometry = new DifferentialDriveOdometry(this.gyro.getRotation2d(), 0 , 0);
+            this.poseEstimator = new DifferentialDrivePoseEstimator(kinematics, gyro.getRotation2d(), getPosition().leftMeters, getPosition().rightMeters, new Pose2d(0,0,gyro.getRotation2d()));
             this.kinematics = new DifferentialDriveKinematics(chassisConfig.TrackWidth);
         }
         
@@ -90,6 +97,12 @@ public class Chassis {
             setWheelSpeeds(wheelSpeeds);
         }
 
+        public void drive(double speed, double rotation){
+            DifferentialDriveWheelSpeeds speeds = new DifferentialDriveWheelSpeeds(chassisConfig.maxVelocity.times(speed+rotation), chassisConfig.maxVelocity.times(speed-rotation));
+            speeds.desaturate(chassisConfig.maxVelocity);
+            setWheelSpeeds(speeds);
+        }
+
         private void setWheelSpeeds(DifferentialDriveWheelSpeeds speeds){
             for(var motor : LeftMotor){
                 motor.setVelocity(MetersPerSecond.of(speeds.leftMetersPerSecond));
@@ -98,6 +111,15 @@ public class Chassis {
             for(var motor : RightMotor){
                 motor.setVelocity(MetersPerSecond.of(speeds.rightMetersPerSecond));
             }
+        }
+
+
+        /**
+         * this is the function for robot information update, put it in periodic of your code
+         */
+        public void telemrtry(){
+            PosePublish.accept(poseEstimator.update(gyro.getRotation2d(), getPosition()));
+            TempAlert.accept(LeftMotor[0].getMotorTemp().gte(chassisConfig.TempLimit) || RightMotor[0].getMotorTemp().gte(chassisConfig.TempLimit));
         }
     }
 
