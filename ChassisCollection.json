@@ -1,17 +1,71 @@
 {
     "fileName": "ChassisCollection.json",
     "name": "ChassisCollection",
-    "version": "2025.1.0",
-    "uuid": "28efd46b-05a7-4360-959c-5621ab127233",
+    "version": "${version}",
+    "frcYear": "2025",
+    "uuid": "4dfe4cba-8a6c-44c8-8d0d-8cb26a4dbae6",
     "mavenUrls": [
-      "file:/Users/justmore5mins/.m2/repository"
+        "https://github.com/FRC-8569/ChassisCollection"
     ],
-    "jsonUrl": "https://github.com/ChassisCollection/ChassisCollection.json",
+    "jsonUrl": "https://github.com/FRC-8569/ChassisCollection/ChassisCollection.json",
     "javaDependencies": [
-      {
-        "groupId": "org.ZenithPolaris",
-        "artifactId": "chassiscollection-java",
-        "version": "2025.1.0"
-      }
+        {
+            "groupId": "${groupId}",
+            "artifactId": "${artifactId}-java",
+            "version": "${version}"
+        }
+    ],
+    "jniDependencies": [
+        {
+            "groupId": "${groupId}",
+            "artifactId": "${artifactId}-driver",
+            "version": "${version}",
+            "skipInvalidPlatforms": true,
+            "isJar": false,
+            "validPlatforms": [
+                "windowsx86-64",
+                "linuxarm64",
+                "linuxx86-64",
+                "linuxathena",
+                "linuxarm32",
+                "osxuniversal"
+            ]
+        }
+    ],
+    "cppDependencies": [
+        {
+            "groupId": "${groupId}",
+            "artifactId": "${artifactId}-cpp",
+            "version": "${version}",
+            "libName": "Vendor",
+            "headerClassifier": "headers",
+            "sharedLibrary": false,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": [
+                "windowsx86-64",
+                "linuxarm64",
+                "linuxx86-64",
+                "linuxathena",
+                "linuxarm32",
+                "osxuniversal"
+            ]
+        },
+        {
+            "groupId": "${groupId}",
+            "artifactId": "${artifactId}-driver",
+            "version": "${version}",
+            "libName": "VendorDriver",
+            "headerClassifier": "headers",
+            "sharedLibrary": false,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": [
+                "windowsx86-64",
+                "linuxarm64",
+                "linuxx86-64",
+                "linuxathena",
+                "linuxarm32",
+                "osxuniversal"
+            ]
+        }
     ]
-  }
+}

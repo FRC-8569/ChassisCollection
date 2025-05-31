@@ -1,6 +1,6 @@
-package org.ZenithPolaris.Collections;
+package org.ZenithPolars.ChassisCollection;
 
-import org.ZenithPolaris.Collections.utils.GyroInterface;
+import org.ZenithPolars.ChassisCollection.utils.DifferentialDrives.Gyroscope;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.studica.frc.AHRS;
@@ -8,17 +8,17 @@ import com.studica.frc.AHRS.NavXComType;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 
-public class Gyroscope {
-    public class NavXGyro implements GyroInterface<AHRS> {
+public class Gyro {
+    public class NavXGyro implements Gyroscope<AHRS>{
         public AHRS gyro;
-        
-        public NavXGyro(NavXComType com){
-            gyro = new AHRS(com);
+
+        public NavXGyro(NavXComType type){
+            gyro = new AHRS(type);
         }
-        
+
         @Override
         public Rotation2d getRotation2d(){
-            return gyro.getRotation2d();
+            return this.getRotation2d();
         }
 
         @Override
@@ -27,9 +27,9 @@ public class Gyroscope {
         }
     }
 
-    public class Pigeon2Gyro implements GyroInterface<Pigeon2> {
+    public class Pigeon2Gyro implements Gyroscope<Pigeon2>{
         public Pigeon2 gyro;
-
+        
         public Pigeon2Gyro(int CANID){
             gyro = new Pigeon2(CANID);
         }
@@ -43,6 +43,5 @@ public class Gyroscope {
         public Pigeon2 getGyro(){
             return gyro;
         }
-        
     }
 }
