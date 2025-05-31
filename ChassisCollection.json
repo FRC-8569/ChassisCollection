@@ -9,7 +9,7 @@
     "jsonUrl": "https://raw.githubusercontent.com/JustMore5Mins/ChassisCollection/main/chassis-collection.json",
     "javaDependencies": [
       {
-        "groupId": "com.justmore5mins.frc",
+        "groupId": "org.ZenithPolaris",
         "artifactId": "chassiscollection",
         "version": "2025.1.0"
       }
