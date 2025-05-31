@@ -4,6 +4,7 @@ plugins {
     id 'com.gradleup.shadow' version '8.3.5'
     id "edu.wpi.first.GradleRIO" version "2025.3.2"
     id 'edu.wpi.first.WpilibTools' version '2.1.0'
+    id 'maven-publish'
 }
 
 application {
@@ -56,4 +57,21 @@ shadowJar {
 
 wrapper {
     gradleVersion = '8.11'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'org.ZenithPolaris'
+            artifactId = 'ChassisCollection'
+            version = '1.0.0'
+        }
+    }
+    repositories {
+        maven {
+            name = "localToBuildFolder"
+            url = uri("$buildDir/Maven")
+        }
+    }
 }

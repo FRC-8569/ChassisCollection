@@ -6,8 +6,6 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.Rotation;
 import static edu.wpi.first.units.Units.Rotations;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
-import static edu.wpi.first.units.Units.derive;
-
 import org.ZenithPolars.ChassisCollection.utils.DifferentialDrives.Encoder;
 import org.ZenithPolars.ChassisCollection.utils.DifferentialDrives.KOPWheelConfig;
 import org.ZenithPolars.ChassisCollection.utils.DifferentialDrives.NormalDriveWheels;
@@ -77,7 +75,7 @@ public class Wheels {
                 motor = new SparkMax(MotorID, MotorType.kBrushless);
                 encoder = motor.getEncoder();
                 motor.configure(CustomConfig, ResetMode.kNoResetSafeParameters, PersistMode.kPersistParameters);
-                this.wheelConfig = wheelConfig;
+                this.wheelConfig = WheelConfig;
             }
 
             @Override

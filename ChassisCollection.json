@@ -1,71 +1,23 @@
 {
-    "fileName": "ChassisCollection.json",
+    "fileVersion": 1,
     "name": "ChassisCollection",
-    "version": "${version}",
-    "frcYear": "2025",
-    "uuid": "4dfe4cba-8a6c-44c8-8d0d-8cb26a4dbae6",
+    "version": "2025.1.0",
+    "uuid": "c2c406e3-31d4-4015-b735-b665d932ea56",
     "mavenUrls": [
-        "https://github.com/FRC-8569/ChassisCollection"
+      "https://raw.githubusercontent.com/JustMore5Mins/ChassisCollection/main/maven-repo/"
     ],
-    "jsonUrl": "https://github.com/FRC-8569/ChassisCollection/ChassisCollection.json",
+    "jsonUrl": "https://raw.githubusercontent.com/JustMore5Mins/ChassisCollection/main/chassis-collection.json",
     "javaDependencies": [
-        {
-            "groupId": "${groupId}",
-            "artifactId": "${artifactId}-java",
-            "version": "${version}"
-        }
+      {
+        "groupId": "com.justmore5mins.frc",
+        "artifactId": "chassiscollection",
+        "version": "2025.1.0"
+      }
     ],
-    "jniDependencies": [
-        {
-            "groupId": "${groupId}",
-            "artifactId": "${artifactId}-driver",
-            "version": "${version}",
-            "skipInvalidPlatforms": true,
-            "isJar": false,
-            "validPlatforms": [
-                "windowsx86-64",
-                "linuxarm64",
-                "linuxx86-64",
-                "linuxathena",
-                "linuxarm32",
-                "osxuniversal"
-            ]
-        }
-    ],
-    "cppDependencies": [
-        {
-            "groupId": "${groupId}",
-            "artifactId": "${artifactId}-cpp",
-            "version": "${version}",
-            "libName": "Vendor",
-            "headerClassifier": "headers",
-            "sharedLibrary": false,
-            "skipInvalidPlatforms": true,
-            "binaryPlatforms": [
-                "windowsx86-64",
-                "linuxarm64",
-                "linuxx86-64",
-                "linuxathena",
-                "linuxarm32",
-                "osxuniversal"
-            ]
-        },
-        {
-            "groupId": "${groupId}",
-            "artifactId": "${artifactId}-driver",
-            "version": "${version}",
-            "libName": "VendorDriver",
-            "headerClassifier": "headers",
-            "sharedLibrary": false,
-            "skipInvalidPlatforms": true,
-            "binaryPlatforms": [
-                "windowsx86-64",
-                "linuxarm64",
-                "linuxx86-64",
-                "linuxathena",
-                "linuxarm32",
-                "osxuniversal"
-            ]
-        }
-    ]
-}
+    "jniDependencies": [],
+    "cppDependencies": [],
+    "documentationUrl": "https://github.com/JustMore5Mins/ChassisCollection",
+    "projectUrl": "https://github.com/JustMore5Mins/ChassisCollection",
+    "license": "MIT"
+  }
+  
