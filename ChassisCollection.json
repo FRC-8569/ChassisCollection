@@ -4,20 +4,44 @@
     "version": "2025.1.0",
     "uuid": "c2c406e3-31d4-4015-b735-b665d932ea56",
     "mavenUrls": [
-      "https://raw.githubusercontent.com/JustMore5Mins/ChassisCollection/main/maven-repo/"
+        "https://raw.githubusercontent.com/FRC-8569/ChassisCollection/main/build/Maven"
     ],
-    "jsonUrl": "https://raw.githubusercontent.com/JustMore5Mins/ChassisCollection/main/chassis-collection.json",
+    "jsonUrl": "https://raw.githubusercontent.com/FRC-8569/ChassisCollection/main/ChassisCollection.json",
     "javaDependencies": [
-      {
-        "groupId": "org.ZenithPolaris",
-        "artifactId": "chassiscollection",
-        "version": "2025.1.0"
-      }
+        {
+            "groupId": "org.ZenithPolaris",
+            "artifactId": "chassiscollection",
+            "version": "2025.1.0"
+        },
+        {
+            "groupId": "edu.wpi.first",
+            "artifactId": "wpilibj",
+            "version": "2025.0.0"
+        },
+        {
+            "groupId": "com.ctre.phoenix",
+            "artifactId": "phoenix",
+            "version": "frc2025-latest"
+        },
+        {
+            "groupId": "com.ctre.phoenix6",
+            "artifactId": "phoenix6",
+            "version": "frc2025-latest"
+        },
+        {
+            "groupId": "com.revrobotics",
+            "artifactId": "revlib",
+            "version": "2025.0.0"
+        },
+        {
+            "groupId": "com.studica",
+            "artifactId": "navx",
+            "version": "2025.0.1"
+        }
     ],
     "jniDependencies": [],
     "cppDependencies": [],
     "documentationUrl": "https://github.com/JustMore5Mins/ChassisCollection",
     "projectUrl": "https://github.com/JustMore5Mins/ChassisCollection",
     "license": "MIT"
-  }
-  
+}
